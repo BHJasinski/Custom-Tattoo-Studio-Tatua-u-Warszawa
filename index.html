@@ -18,10 +18,10 @@
             --neon-orange: #FF7A18;
             --text-main: #F4F1FF;
             --text-secondary: #B9B2D3;
-            --text-meta: #7E7898;
+            --text-meta: #A5A1B8; /* Rozjaśniony dla lepszego kontrastu */
             --dna-gradient: linear-gradient(135deg, #FF2BD6 0%, #7C3CFF 45%, #00E5FF 100%);
-            --glass-bg: rgba(18, 11, 42, 0.55);
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(18, 11, 42, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -31,14 +31,13 @@
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.8; /* Zwiększony dla czytelności */
         }
 
         .bg-elements {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background: radial-gradient(circle at 20% 30%, rgba(124, 60, 255, 0.15) 0%, transparent 50%),
                         radial-gradient(circle at 80% 70%, rgba(255, 43, 214, 0.1) 0%, transparent 50%);
-            opacity: 1;
         }
 
         h1, h2, h3 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
@@ -74,42 +73,35 @@
         }
 
         .btn-insta-head {
-            background: transparent;
-            border: 1px solid var(--neon-magenta);
-            color: var(--neon-magenta);
-            padding: 10px 22px; border-radius: 5px; font-size: 0.75rem;
+            background: transparent; border: 1px solid var(--neon-magenta);
+            color: var(--neon-magenta); padding: 10px 22px; border-radius: 5px; font-size: 0.75rem;
             font-weight: 700; text-decoration: none; transition: 0.3s;
-        }
-        .btn-insta-head:hover {
-            background: var(--neon-magenta);
-            color: white;
-            box-shadow: 0 0 15px var(--neon-magenta);
         }
 
         .main-logo-container { width: 100%; display: flex; justify-content: center; padding: 0 10px; }
         
         .main-logo-img {
-            width: 100%; max-width: 600px; height: auto;
-            filter: grayscale(1) brightness(0.5);
-            transition: filter 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0.8;
+            width: 100%; max-width: 500px; height: auto;
+            filter: grayscale(1) brightness(0.6);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.7;
         }
 
         .logo-active {
-            filter: drop-shadow(0 0 5px var(--neon-cyan)) drop-shadow(0 0 20px var(--neon-magenta)) grayscale(0) brightness(1);
+            filter: drop-shadow(0 0 15px var(--neon-magenta)) grayscale(0) brightness(1.2);
             opacity: 1;
             animation: cyber-pulse 4s infinite alternate ease-in-out;
         }
 
         @keyframes cyber-pulse {
             0% { transform: scale(1); }
-            100% { transform: scale(1.01); }
+            100% { transform: scale(1.02); }
         }
 
         /* HERO SECTION */
         .hero { min-height: 80vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; padding: 60px 0; }
         .hero-text h1 { font-size: clamp(2rem, 8vw, 3.5rem); line-height: 1.1; margin-bottom: 25px; }
-        .hero-text p { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 40px; max-width: 550px; }
+        .hero-text p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 40px; max-width: 550px; }
 
         .hero-visual { position: relative; padding: 10px; }
         .hero-img-frame { 
@@ -120,50 +112,52 @@
         }
 
         /* ARTISTS */
-        .artist-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); 
-            gap: 35px; 
-            padding: 40px 0; 
-        }
-        .artist-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s; }
-        .artist-card:hover { border-color: var(--neon-cyan); transform: translateY(-5px); box-shadow: 0 0 20px rgba(0, 229, 255, 0.2); }
+        .artist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 35px; padding: 40px 0; }
+        .artist-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 15px; overflow: hidden; transition: 0.3s; }
         
-        /* Specyficzny blask dla Barbera */
-        .barber-card:hover { border-color: var(--neon-orange) !important; box-shadow: 0 0 20px rgba(255, 122, 24, 0.3) !important; }
-        .barber-card .insta-btn:hover { background: var(--neon-orange) !important; box-shadow: 0 0 15px var(--neon-orange) !important; border-color: var(--neon-orange) !important; }
+        /* Spójność zdjęć tatuażystów */
+        .tattoo-card .artist-img-container img {
+            filter: saturate(1.2) contrast(1.1) sepia(0.2) hue-rotate(-15deg); /* Delikatny filtr neonowy */
+        }
 
-        .artist-img-container { 
-            width: 100%; 
-            height: 450px; 
-            overflow: hidden; 
-            border-bottom: 2px solid var(--neon-cyan); 
-        }
-        .artist-img-container img { width: 100%; height: 100%; object-fit: cover; }
+        .artist-img-container { width: 100%; height: 450px; overflow: hidden; border-bottom: 2px solid var(--neon-cyan); }
+        .artist-img-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
         .artist-info { padding: 30px; text-align: center; }
-        .artist-info h3 { font-size: 1.5rem; margin-bottom: 10px; }
         
+        /* Kolory przycisków */
         .insta-btn { 
-            display: block; margin-top: 15px; padding: 15px; border: 1px solid var(--neon-magenta); 
+            display: block; margin-top: 15px; padding: 15px; border: 1px solid var(--neon-cyan); 
             color: var(--text-main); text-decoration: none; font-size: 0.8rem; font-weight: 700; 
-            border-radius: 5px; background: rgba(255, 43, 214, 0.05); transition: 0.3s;
+            border-radius: 5px; background: rgba(0, 229, 255, 0.05); transition: 0.3s;
         }
-        .insta-btn:hover { background: var(--neon-magenta); box-shadow: 0 0 15px var(--neon-magenta); }
+        .tattoo-card .insta-btn:hover { background: var(--neon-cyan); color: var(--bg-deep); box-shadow: 0 0 15px var(--neon-cyan); }
+        
+        .barber-card .artist-img-container { border-bottom-color: var(--neon-orange); }
+        .barber-card .insta-btn { border-color: var(--neon-orange); background: rgba(255, 122, 24, 0.05); }
+        .barber-card .insta-btn:hover { background: var(--neon-orange); color: white; box-shadow: 0 0 15px var(--neon-orange); }
 
         /* CONTACT */
         .contact-box { padding: 80px 20px; text-align: center; background: var(--glass-bg); border-radius: 20px; margin: 80px 0; border: 1px solid var(--neon-violet); }
         .phone-link { font-family: 'Orbitron', sans-serif; font-size: clamp(1.5rem, 8vw, 3.5rem); background: var(--dna-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; font-weight: 900; }
-        .map-btn { display: inline-block; margin-top: 25px; padding: 15px 35px; border: 2px solid var(--neon-orange); color: var(--neon-orange); text-decoration: none; font-weight: 700; border-radius: 5px; transition: 0.3s; }
-        .map-btn:hover { background: var(--neon-orange); color: white; box-shadow: 0 0 20px var(--neon-orange); }
+
+        /* STICKY CTA MOBILE */
+        .sticky-cta {
+            display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 400px; background: var(--dna-gradient);
+            padding: 15px; border-radius: 50px; z-index: 999; text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 43, 214, 0.5); text-decoration: none;
+            color: white; font-weight: 900; font-family: 'Orbitron'; letter-spacing: 1px;
+            backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2);
+        }
 
         @media (max-width: 768px) {
-            .top-nav { flex-direction: column; gap: 15px; width: 100%; border-radius: 15px; padding: 20px; }
-            .hero { grid-template-columns: 1fr; text-align: center; }
-            .hero-text p { margin: 0 auto 40px auto; }
-            .hero-img-frame { height: 350px; }
-            .artist-grid { grid-template-columns: 1fr; gap: 25px; }
+            .sticky-cta { display: flex; justify-content: center; align-items: center; gap: 10px; }
+            .main-logo-img { max-width: 180px; opacity: 1; filter: grayscale(0) brightness(1.2); }
+            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 20px; }
+            .hero-img-frame { height: 300px; }
             .artist-img-container { height: 350px; }
-            .artist-info { padding: 20px; }
+            header { padding-bottom: 20px; }
+            footer { padding-bottom: 100px; } /* Miejsce na sticky button */
         }
     </style>
 </head>
@@ -173,6 +167,10 @@
     <audio id="soundBarber" src="nozyczki.mp3" preload="auto"></audio>
 
     <div class="bg-elements"></div>
+
+    <a href="tel:+48570863474" class="sticky-cta">
+        <span>📞</span> ZADZWOŃ TERAZ
+    </a>
 
     <header>
         <div class="container header-content">
@@ -184,7 +182,6 @@
                 </ul>
                 <div style="display: flex; gap: 10px;">
                     <a href="https://www.instagram.com/customtattoowarsaw/" target="_blank" class="btn-insta-head">INSTAGRAM</a>
-                    <a href="tel:+48570863474" class="btn-nav">ZADZWOŃ</a>
                 </div>
             </nav>
             <div class="main-logo-container">
@@ -194,14 +191,11 @@
     </header>
 
     <main class="container">
-        
         <section class="hero">
             <div class="hero-text">
-                <span class="mono" style="color: var(--neon-cyan);">// SYSTEM_STATUS: ONLINE</span>
+                <span class="mono" style="color: var(--neon-cyan); font-weight: 600;">// SYSTEM_STATUS: ONLINE</span>
                 <h1>CUSTOM <br><span style="color: var(--neon-magenta);">TATTOO</span> WARSZAWA</h1>
-                
-                <p>Odkryj nową definicję sztuki na skórze. W naszym studiu w Warszawie łączymy wizjonerskie podejście z perfekcyjnym wykonaniem. Każdy projekt to indywidualna historia opowiedziana za pomocą tuszu.</p>
-                
+                <p>Odkryj nową definicję sztuki na skórze. W naszym studiu w Warszawie łączymy wizjonerskie podejście z perfekcyjnym wykonaniem. Każdy projekt to indywidualna historia.</p>
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <a href="tel:+48570863474" class="btn-nav" style="padding: 18px 30px; flex: 1; min-width: 200px;">UMÓW SESJĘ</a>
                     <a href="portfolio.html" class="btn-nav" style="background: transparent; border: 1px solid var(--neon-cyan); box-shadow: none; padding: 18px 30px; flex: 1; min-width: 200px;">PORTFOLIO VIDEO</a>
@@ -224,7 +218,7 @@
                     <div class="artist-info">
                         <span class="mono" style="color: var(--neon-cyan); font-size: 0.75rem; letter-spacing: 2px;">// TATTOO_ARTIST</span>
                         <h3 style="margin-top: 5px;">Arek</h3>
-                        <a href="https://www.instagram.com/customtattoowarsaw/" target="https://www.instagram.com/customtattoowarsaw/" class="insta-btn mono">ZOBACZ PRACE</a>
+                        <a href="https://www.instagram.com/customtattoowarsaw/" target="_blank" class="insta-btn mono">ZOBACZ PRACE</a>
                     </div>
                 </div>
 
@@ -233,16 +227,16 @@
                     <div class="artist-info">
                         <span class="mono" style="color: var(--neon-cyan); font-size: 0.75rem; letter-spacing: 2px;">// TATTOO_ARTIST</span>
                         <h3 style="margin-top: 5px;">Daniel</h3>
-                        <a href="https://www.instagram.com/stories/highlights/18127161916447323/" target="https://www.instagram.com/stories/highlights/18127161916447323/" class="insta-btn mono">ZOBACZ PRACE</a>
+                        <a href="https://www.instagram.com/stories/highlights/18127161916447323/" target="_blank" class="insta-btn mono">ZOBACZ PRACE</a>
                     </div>
                 </div>
 
-                <div class="artist-card barber-card" style="border-color: rgba(255, 122, 24, 0.2);">
-                    <div class="artist-img-container" style="border-bottom-color: var(--neon-orange);"><img src="Mariusz.png" alt="Mariusz"></div>
+                <div class="artist-card barber-card">
+                    <div class="artist-img-container"><img src="Mariusz.png" alt="Mariusz"></div>
                     <div class="artist-info">
                         <span class="mono" style="color: var(--neon-orange); font-size: 0.75rem; letter-spacing: 2px;">// MASTER_BARBER</span>
                         <h3 style="margin-top: 5px;">Mariusz</h3>
-                        <a href="https://www.instagram.com/stories/highlights/17953677558066578/" target="https://www.instagram.com/stories/highlights/17953677558066578/" class="insta-btn mono" style="border-color: var(--neon-orange); color: var(--text-main);">UMÓW STRZYŻENIE</a>
+                        <a href="https://www.instagram.com/stories/highlights/17953677558066578/" target="_blank" class="insta-btn mono">UMÓW STRZYŻENIE</a>
                     </div>
                 </div>
             </div>
@@ -252,21 +246,19 @@
             <span class="mono" style="color: var(--neon-orange);">// REZERWACJA_TERMINÓW</span>
             <h2 style="margin: 20px 0;">ZADZWOŃ DO NAS</h2>
             <a href="tel:+48570863474" class="phone-link">+48 570 863 474</a>
-            <br><br><br>
-            <a href="https://maps.app.goo.gl/khT8e59KLgHj1Har8" target="https://maps.app.goo.gl/pA1uzz73EE9nrgyn9" class="map-btn mono">LOKALIZACJA STUDIA 🗺️</a>
+            <br><br>
+            <a href="#" target="_blank" class="btn-nav" style="display: inline-block; text-decoration: none; margin-top: 20px;">LOKALIZACJA STUDIA 🗺️</a>
         </section>
-
     </main>
 
     <footer style="padding: 40px 0; text-align: center; border-top: 1px solid var(--glass-border);">
-        <img src="logotyp%20custom%20tattoo.png" alt="LOGO" style="height: 40px; width: auto; opacity: 0.7;">
+        <img src="logotyp%20custom%20tattoo.png" alt="LOGO" style="height: 40px; width: auto; opacity: 0.5;">
         <p class="mono" style="font-size: 0.7rem; color: var(--text-meta); margin-top: 20px;">
             © 2026 CUSTOM TATTOO WARSZAWA | DESIGNED FOR THE FUTURE
         </p>
     </footer>
 
     <script>
-        // Obsługa logotypu przy przewijaniu
         window.onscroll = function() {
             var logo = document.getElementById("mainLogo");
             if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
@@ -274,18 +266,14 @@
             }
         };
 
-        // Obsługa dźwięków przy najechaniu
         const tattooSound = document.getElementById('soundTattoo');
         const barberSound = document.getElementById('soundBarber');
-
-        // USTAWIANIE GŁOŚNOŚCI (0.5 = 50% głośności)
         tattooSound.volume = 0.2;
         barberSound.volume = 0.2;
 
-        // Funkcja do bezpiecznego odtwarzania
         const playSound = (audio) => {
-            audio.currentTime = 0; // Przewiń do początku
-            audio.play().catch(e => console.log("Audio zablokowane - kliknij na stronę, aby odblokować"));
+            audio.currentTime = 0;
+            audio.play().catch(e => {});
         };
 
         const stopSound = (audio) => {
@@ -293,18 +281,15 @@
             audio.currentTime = 0;
         };
 
-        // Nasłuchiwanie na tatuażystów
         document.querySelectorAll('.tattoo-card').forEach(card => {
             card.addEventListener('mouseenter', () => playSound(tattooSound));
             card.addEventListener('mouseleave', () => stopSound(tattooSound));
         });
 
-        // Nasłuchiwanie na barbera
         document.querySelectorAll('.barber-card').forEach(card => {
             card.addEventListener('mouseenter', () => playSound(barberSound));
             card.addEventListener('mouseleave', () => stopSound(barberSound));
         });
     </script>
-
 </body>
 </html>
