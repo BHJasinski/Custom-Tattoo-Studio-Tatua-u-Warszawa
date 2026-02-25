@@ -18,7 +18,7 @@
             --neon-orange: #FF7A18;
             --text-main: #F4F1FF;
             --text-secondary: #B9B2D3;
-            --text-meta: #A5A1B8; /* Rozjaśniony dla lepszego kontrastu */
+            --text-meta: #A5A1B8;
             --dna-gradient: linear-gradient(135deg, #FF2BD6 0%, #7C3CFF 45%, #00E5FF 100%);
             --glass-bg: rgba(18, 11, 42, 0.7);
             --glass-border: rgba(255, 255, 255, 0.1);
@@ -31,7 +31,7 @@
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            line-height: 1.8; /* Zwiększony dla czytelności */
+            line-height: 1.8;
         }
 
         .bg-elements {
@@ -114,27 +114,48 @@
         /* ARTISTS */
         .artist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 35px; padding: 40px 0; }
         .artist-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 15px; overflow: hidden; transition: 0.3s; }
-        
-        /* Spójność zdjęć tatuażystów */
-        .tattoo-card .artist-img-container img {
-            filter: saturate(1.2) contrast(1.1) sepia(0.2) hue-rotate(-15deg); /* Delikatny filtr neonowy */
-        }
-
+        .tattoo-card .artist-img-container img { filter: saturate(1.2) contrast(1.1) sepia(0.2) hue-rotate(-15deg); }
         .artist-img-container { width: 100%; height: 450px; overflow: hidden; border-bottom: 2px solid var(--neon-cyan); }
         .artist-img-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
         .artist-info { padding: 30px; text-align: center; }
         
-        /* Kolory przycisków */
         .insta-btn { 
             display: block; margin-top: 15px; padding: 15px; border: 1px solid var(--neon-cyan); 
             color: var(--text-main); text-decoration: none; font-size: 0.8rem; font-weight: 700; 
             border-radius: 5px; background: rgba(0, 229, 255, 0.05); transition: 0.3s;
         }
         .tattoo-card .insta-btn:hover { background: var(--neon-cyan); color: var(--bg-deep); box-shadow: 0 0 15px var(--neon-cyan); }
-        
         .barber-card .artist-img-container { border-bottom-color: var(--neon-orange); }
         .barber-card .insta-btn { border-color: var(--neon-orange); background: rgba(255, 122, 24, 0.05); }
         .barber-card .insta-btn:hover { background: var(--neon-orange); color: white; box-shadow: 0 0 15px var(--neon-orange); }
+
+        /* --- NOWA SEKCJA OPINIE (SLIDER) --- */
+        .reviews-section { padding: 80px 0; position: relative; }
+        .slider-container {
+            max-width: 900px; margin: 0 auto; position: relative;
+            background: var(--glass-bg); border: 1px solid var(--neon-magenta);
+            border-radius: 20px; padding: 50px 20px; overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 43, 214, 0.1);
+        }
+        .slides-wrapper { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
+        .slide { min-width: 100%; padding: 0 40px; text-align: center; }
+        .stars { color: var(--neon-orange); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 5px; }
+        .review-text { font-style: italic; color: var(--text-main); font-size: 1.1rem; margin-bottom: 25px; }
+        .review-author { font-family: 'Orbitron'; color: var(--neon-cyan); font-size: 0.9rem; letter-spacing: 2px; }
+
+        .slider-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan); width: 50px; height: 50px; border-radius: 50%;
+            cursor: pointer; z-index: 10; transition: 0.3s; display: flex; align-items: center; justify-content: center;
+        }
+        .slider-btn:hover { background: var(--neon-cyan); color: var(--bg-deep); box-shadow: 0 0 15px var(--neon-cyan); }
+        .prev-btn { left: 10px; }
+        .next-btn { right: 10px; }
+
+        .dots-container { display: flex; justify-content: center; gap: 10px; margin-top: 30px; }
+        .dot { width: 8px; height: 8px; background: rgba(255,255,255,0.2); border-radius: 50%; cursor: pointer; transition: 0.3s; }
+        .dot.active { background: var(--neon-magenta); box-shadow: 0 0 10px var(--neon-magenta); width: 20px; border-radius: 10px; }
 
         /* CONTACT */
         .contact-box { padding: 80px 20px; text-align: center; background: var(--glass-bg); border-radius: 20px; margin: 80px 0; border: 1px solid var(--neon-violet); }
@@ -156,8 +177,11 @@
             .hero { grid-template-columns: 1fr; text-align: center; padding-top: 20px; }
             .hero-img-frame { height: 300px; }
             .artist-img-container { height: 350px; }
+            .slider-btn { width: 40px; height: 40px; }
+            .slide { padding: 0 20px; }
+            .review-text { font-size: 0.95rem; }
             header { padding-bottom: 20px; }
-            footer { padding-bottom: 100px; } /* Miejsce na sticky button */
+            footer { padding-bottom: 100px; }
         }
     </style>
 </head>
@@ -178,6 +202,7 @@
                 <ul>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="#artists">Mistrzowie</a></li>
+                    <li><a href="#reviews">Opinie</a></li>
                     <li><a href="#contact">Kontakt</a></li>
                 </ul>
                 <div style="display: flex; gap: 10px;">
@@ -211,7 +236,6 @@
                 <h2 style="font-size: 2.5rem; color: var(--neon-cyan);">MISTRZOWIE LABU</h2>
                 <p class="mono" style="color: var(--text-meta);">[ PROTOKÓŁ: PERSONALIZACJA_STYLIZACJI ]</p>
             </div>
-            
             <div class="artist-grid">
                 <div class="artist-card tattoo-card">
                     <div class="artist-img-container"><img src="Arek.png" alt="Arek"></div>
@@ -221,7 +245,6 @@
                         <a href="https://www.instagram.com/customtattoowarsaw/" target="_blank" class="insta-btn mono">ZOBACZ PRACE</a>
                     </div>
                 </div>
-
                 <div class="artist-card tattoo-card">
                     <div class="artist-img-container"><img src="Daniel.png" alt="Daniel"></div>
                     <div class="artist-info">
@@ -230,7 +253,6 @@
                         <a href="https://www.instagram.com/stories/highlights/18127161916447323/" target="_blank" class="insta-btn mono">ZOBACZ PRACE</a>
                     </div>
                 </div>
-
                 <div class="artist-card barber-card">
                     <div class="artist-img-container"><img src="Mariusz.png" alt="Mariusz"></div>
                     <div class="artist-info">
@@ -239,6 +261,52 @@
                         <a href="https://www.instagram.com/stories/highlights/17953677558066578/" target="_blank" class="insta-btn mono">UMÓW STRZYŻENIE</a>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="reviews" class="reviews-section">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2 style="font-size: 2.2rem; color: var(--neon-magenta);">GŁOSY Z LABU</h2>
+                <p class="mono" style="color: var(--text-meta);">[ LOG: FEEDBACK_KLIENTÓW ]</p>
+            </div>
+
+            <div class="slider-container">
+                <button class="slider-btn prev-btn" onclick="moveSlide(-1)">❮</button>
+                <button class="slider-btn next-btn" onclick="moveSlide(1)">❯</button>
+                
+                <div class="slides-wrapper" id="slidesWrapper">
+                    <div class="slide">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Doradził, opowiedział, podpowiedział... wiedziałem, że jestem w dobrych rękach. Porter córki wyszedł perfekcyjnie! Polecam z czystym sumieniem."</p>
+                        <p class="review-author">// ADAM OSIK</p>
+                    </div>
+                    <div class="slide">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Pierwsze tatuaże wykonane profesjonalnie. Arek gość pozytywnie zakręcony. On tym żyje. Polecam z czystym sumieniem."</p>
+                        <p class="review-author">// RADOSŁAW CZERNICKI</p>
+                    </div>
+                    <div class="slide">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Profesjonalizm na najwyższym poziomie. Artyści doskonale słuchają potrzeb klienta, doradzają i dbają o każdy detal projektu. Atmosfera jest świetna!"</p>
+                        <p class="review-author">// ANETA OWSIANKA</p>
+                    </div>
+                    <div class="slide">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"The best salon tatuażu... nowa lokalizacja z fantastyczną atmosferą, a efekty tatuaży są naprawdę niesamowite. Jak na Warszawę ceny naprawdę w porządku."</p>
+                        <p class="review-author">// ANDRZEJ MACIEJEWSKI</p>
+                    </div>
+                    <div class="slide">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Do zrobienia był cover i lepiej trafić nie mogłam. Stary tatuaż zniknął, a nowy wygląda obłędnie. Artysta pomógł dobrać wzór idealnie."</p>
+                        <p class="review-author">// KTOŚ (OPINIA GOOGLE)</p>
+                    </div>
+                    <div class="slide">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"To, co stworzył Gabsztyl, przerosło moje najśmielsze oczekiwania. Super atmosfera i przesympatyczni ludzie."</p>
+                        <p class="review-author">// KASIA LUTOSTANSKA</p>
+                    </div>
+                </div>
+                <div class="dots-container" id="dotsContainer"></div>
             </div>
         </section>
 
@@ -259,6 +327,7 @@
     </footer>
 
     <script>
+        /* OBSŁUGA LOGO */
         window.onscroll = function() {
             var logo = document.getElementById("mainLogo");
             if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
@@ -266,29 +335,63 @@
             }
         };
 
+        /* OBSŁUGA DŹWIĘKÓW */
         const tattooSound = document.getElementById('soundTattoo');
         const barberSound = document.getElementById('soundBarber');
         tattooSound.volume = 0.2;
         barberSound.volume = 0.2;
-
-        const playSound = (audio) => {
-            audio.currentTime = 0;
-            audio.play().catch(e => {});
-        };
-
-        const stopSound = (audio) => {
-            audio.pause();
-            audio.currentTime = 0;
-        };
-
+        const playSound = (audio) => { audio.currentTime = 0; audio.play().catch(e => {}); };
+        const stopSound = (audio) => { audio.pause(); audio.currentTime = 0; };
         document.querySelectorAll('.tattoo-card').forEach(card => {
             card.addEventListener('mouseenter', () => playSound(tattooSound));
             card.addEventListener('mouseleave', () => stopSound(tattooSound));
         });
-
         document.querySelectorAll('.barber-card').forEach(card => {
             card.addEventListener('mouseenter', () => playSound(barberSound));
             card.addEventListener('mouseleave', () => stopSound(barberSound));
+        });
+
+        /* --- SKRYPT SLIDERA OPINII --- */
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const wrapper = document.getElementById('slidesWrapper');
+        const dotsContainer = document.getElementById('dotsContainer');
+
+        // Tworzenie kropek
+        slides.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.onclick = () => goToSlide(i);
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function updateSlider() {
+            wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        function moveSlide(direction) {
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        // Auto-przesuwanie co 5 sekund
+        let autoSlide = setInterval(() => moveSlide(1), 5000);
+
+        // Zatrzymaj auto-przesuwanie przy interakcji myszką
+        document.querySelector('.slider-container').addEventListener('mouseenter', () => clearInterval(autoSlide));
+        document.querySelector('.slider-container').addEventListener('mouseleave', () => {
+            autoSlide = setInterval(() => moveSlide(1), 5000);
         });
     </script>
 </body>
