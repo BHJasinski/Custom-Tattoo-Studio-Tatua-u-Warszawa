@@ -169,6 +169,9 @@
 </head>
 <body>
 
+    <audio id="soundTattoo" src="maszynka.mp3" preload="auto"></audio>
+    <audio id="soundBarber" src="nozyczki.mp3" preload="auto"></audio>
+
     <div class="bg-elements"></div>
 
     <header>
@@ -216,7 +219,7 @@
             </div>
             
             <div class="artist-grid">
-                <div class="artist-card">
+                <div class="artist-card tattoo-card">
                     <div class="artist-img-container"><img src="Arek.png" alt="Arek"></div>
                     <div class="artist-info">
                         <span class="mono" style="color: var(--neon-cyan); font-size: 0.75rem; letter-spacing: 2px;">// TATTOO_ARTIST</span>
@@ -225,7 +228,7 @@
                     </div>
                 </div>
 
-                <div class="artist-card">
+                <div class="artist-card tattoo-card">
                     <div class="artist-img-container"><img src="Daniel.png" alt="Daniel"></div>
                     <div class="artist-info">
                         <span class="mono" style="color: var(--neon-cyan); font-size: 0.75rem; letter-spacing: 2px;">// TATTOO_ARTIST</span>
@@ -263,12 +266,40 @@
     </footer>
 
     <script>
+        // Obsługa logotypu przy przewijaniu
         window.onscroll = function() {
             var logo = document.getElementById("mainLogo");
             if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                 logo.classList.add("logo-active");
             }
         };
+
+        // Obsługa dźwięków przy najechaniu
+        const tattooSound = document.getElementById('soundTattoo');
+        const barberSound = document.getElementById('soundBarber');
+
+        // Funkcja do bezpiecznego odtwarzania
+        const playSound = (audio) => {
+            audio.currentTime = 0; // Przewiń do początku
+            audio.play().catch(e => console.log("Audio zablokowane - kliknij na stronę, aby odblokować"));
+        };
+
+        const stopSound = (audio) => {
+            audio.pause();
+            audio.currentTime = 0;
+        };
+
+        // Nasłuchiwanie na tatuażystów
+        document.querySelectorAll('.tattoo-card').forEach(card => {
+            card.addEventListener('mouseenter', () => playSound(tattooSound));
+            card.addEventListener('mouseleave', () => stopSound(tattooSound));
+        });
+
+        // Nasłuchiwanie na barbera
+        document.querySelectorAll('.barber-card').forEach(card => {
+            card.addEventListener('mouseenter', () => playSound(barberSound));
+            card.addEventListener('mouseleave', () => stopSound(barberSound));
+        });
     </script>
 
 </body>
