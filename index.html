@@ -278,6 +278,10 @@
         const tattooSound = document.getElementById('soundTattoo');
         const barberSound = document.getElementById('soundBarber');
 
+        // USTAWIANIE GŁOŚNOŚCI (0.5 = 50% głośności)
+        tattooSound.volume = 0.5;
+        barberSound.volume = 0.5;
+
         // Funkcja do bezpiecznego odtwarzania
         const playSound = (audio) => {
             audio.currentTime = 0; // Przewiń do początku
