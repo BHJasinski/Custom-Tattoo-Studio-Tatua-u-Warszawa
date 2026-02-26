@@ -78,8 +78,26 @@
             font-weight: 700; text-decoration: none; transition: 0.3s;
         }
 
+        /* NOWY STYL DLA PRZYCISKU GOOGLE MAPS */
+        .btn-google {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan); padding: 15px 30px; border-radius: 5px;
+            text-decoration: none; font-family: 'Orbitron'; font-size: 0.8rem;
+            transition: 0.3s; margin-top: 30px;
+        }
+        .btn-google:hover { background: var(--neon-cyan); color: var(--bg-deep); box-shadow: 0 0 20px var(--neon-cyan); }
+
+        /* NOWY STYL DLA PRZYCISKU BOOKSY */
+        .btn-booksy {
+            background: #000; border: 2px solid var(--neon-orange);
+            color: var(--neon-orange); padding: 15px 30px; border-radius: 5px;
+            text-decoration: none; font-family: 'Orbitron'; font-size: 0.8rem;
+            transition: 0.3s; text-align: center; font-weight: 700;
+        }
+        .btn-booksy:hover { background: var(--neon-orange); color: white; box-shadow: 0 0 20px var(--neon-orange); }
+
         .main-logo-container { width: 100%; display: flex; justify-content: center; padding: 0 10px; }
-        
         .main-logo-img {
             width: 100%; max-width: 500px; height: auto;
             filter: grayscale(1) brightness(0.6);
@@ -98,7 +116,6 @@
             100% { transform: scale(1.02); }
         }
 
-        /* HERO SECTION */
         .hero { min-height: 80vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; padding: 60px 0; }
         .hero-text h1 { font-size: clamp(2rem, 8vw, 3.5rem); line-height: 1.1; margin-bottom: 25px; }
         .hero-text p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 40px; max-width: 550px; }
@@ -111,10 +128,8 @@
             box-shadow: 0 0 30px rgba(124, 60, 255, 0.2); 
         }
 
-        /* ARTISTS */
         .artist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 35px; padding: 40px 0; }
         .artist-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 15px; overflow: hidden; transition: 0.3s; }
-        .tattoo-card .artist-img-container img { filter: saturate(1.2) contrast(1.1) sepia(0.2) hue-rotate(-15deg); }
         .artist-img-container { width: 100%; height: 450px; overflow: hidden; border-bottom: 2px solid var(--neon-cyan); }
         .artist-img-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
         .artist-info { padding: 30px; text-align: center; }
@@ -126,10 +141,7 @@
         }
         .tattoo-card .insta-btn:hover { background: var(--neon-cyan); color: var(--bg-deep); box-shadow: 0 0 15px var(--neon-cyan); }
         .barber-card .artist-img-container { border-bottom-color: var(--neon-orange); }
-        .barber-card .insta-btn { border-color: var(--neon-orange); background: rgba(255, 122, 24, 0.05); }
-        .barber-card .insta-btn:hover { background: var(--neon-orange); color: white; box-shadow: 0 0 15px var(--neon-orange); }
 
-        /* --- NOWA SEKCJA OPINIE (SLIDER) --- */
         .reviews-section { padding: 80px 0; position: relative; }
         .slider-container {
             max-width: 900px; margin: 0 auto; position: relative;
@@ -157,11 +169,9 @@
         .dot { width: 8px; height: 8px; background: rgba(255,255,255,0.2); border-radius: 50%; cursor: pointer; transition: 0.3s; }
         .dot.active { background: var(--neon-magenta); box-shadow: 0 0 10px var(--neon-magenta); width: 20px; border-radius: 10px; }
 
-        /* CONTACT */
         .contact-box { padding: 80px 20px; text-align: center; background: var(--glass-bg); border-radius: 20px; margin: 80px 0; border: 1px solid var(--neon-violet); }
         .phone-link { font-family: 'Orbitron', sans-serif; font-size: clamp(1.5rem, 8vw, 3.5rem); background: var(--dna-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; font-weight: 900; }
 
-        /* STICKY CTA MOBILE */
         .sticky-cta {
             display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
             width: 90%; max-width: 400px; background: var(--dna-gradient);
@@ -173,14 +183,9 @@
 
         @media (max-width: 768px) {
             .sticky-cta { display: flex; justify-content: center; align-items: center; gap: 10px; }
-            .main-logo-img { max-width: 180px; opacity: 1; filter: grayscale(0) brightness(1.2); }
             .hero { grid-template-columns: 1fr; text-align: center; padding-top: 20px; }
             .hero-img-frame { height: 300px; }
-            .artist-img-container { height: 350px; }
             .slider-btn { width: 40px; height: 40px; }
-            .slide { padding: 0 20px; }
-            .review-text { font-size: 0.95rem; }
-            header { padding-bottom: 20px; }
             footer { padding-bottom: 100px; }
         }
     </style>
@@ -220,10 +225,10 @@
             <div class="hero-text">
                 <span class="mono" style="color: var(--neon-cyan); font-weight: 600;">// SYSTEM_STATUS: ONLINE</span>
                 <h1>CUSTOM <br><span style="color: var(--neon-magenta);">TATTOO</span> WARSZAWA</h1>
-                <p>Odkryj nową definicję sztuki na skórze. W naszym studiu w Warszawie łączymy wizjonerskie podejście z perfekcyjnym wykonaniem. Każdy projekt to indywidualna historia.</p>
+                <p>Odkryj nową definicję sztuki na skórze. W naszym studiu w Warszawie łączymy wizjonerskie podejście z perfekcyjnym wykonaniem.</p>
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                    <a href="tel:+48570863474" class="btn-nav" style="padding: 18px 30px; flex: 1; min-width: 200px;">UMÓW SESJĘ</a>
-                    <a href="portfolio.html" class="btn-nav" style="background: transparent; border: 1px solid var(--neon-cyan); box-shadow: none; padding: 18px 30px; flex: 1; min-width: 200px;">PORTFOLIO VIDEO</a>
+                    <a href="tel:+48570863474" class="btn-nav" style="padding: 18px 30px; flex: 1; min-width: 200px;">UMÓW TATUAŻ</a>
+                    <a href="https://booksy.com/pl-pl/24795_custom-barbershop_barber-shop_3_warszawa" target="_blank" class="btn-booksy" style="flex: 1; min-width: 200px; padding-top: 18px;">UMÓW BARBERA</a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -258,7 +263,8 @@
                     <div class="artist-info">
                         <span class="mono" style="color: var(--neon-orange); font-size: 0.75rem; letter-spacing: 2px;">// MASTER_BARBER</span>
                         <h3 style="margin-top: 5px;">Mariusz</h3>
-                        <a href="https://www.instagram.com/stories/highlights/17953677558066578/" target="_blank" class="insta-btn mono">UMÓW STRZYŻENIE</a>
+                        <a href="https://booksy.com/pl-pl/24795_custom-barbershop_barber-shop_3_warszawa" target="_blank" class="btn-booksy mono" style="display: block; margin-top: 15px;">ZAREZERWUJ (BOOKSY)</a>
+                        <a href="https://www.instagram.com/stories/highlights/17953677558066578/" target="_blank" class="insta-btn mono">INSTAGRAM</a>
                     </div>
                 </div>
             </div>
@@ -277,36 +283,22 @@
                 <div class="slides-wrapper" id="slidesWrapper">
                     <div class="slide">
                         <div class="stars">★★★★★</div>
-                        <p class="review-text">"Doradził, opowiedział, podpowiedział... wiedziałem, że jestem w dobrych rękach. Porter córki wyszedł perfekcyjnie! Polecam z czystym sumieniem."</p>
+                        <p class="review-text">"Doradził, opowiedział, podpowiedział... wiedziałem, że jestem w dobrych rękach. Porter córki wyszedł perfekcyjnie!"</p>
                         <p class="review-author">// ADAM OSIK</p>
                     </div>
                     <div class="slide">
                         <div class="stars">★★★★★</div>
-                        <p class="review-text">"Pierwsze tatuaże wykonane profesjonalnie. Arek gość pozytywnie zakręcony. On tym żyje. Polecam z czystym sumieniem."</p>
+                        <p class="review-text">"Pierwsze tatuaże wykonane profesjonalnie. Arek gość pozytywnie zakręcony. On tym żyje."</p>
                         <p class="review-author">// RADOSŁAW CZERNICKI</p>
-                    </div>
-                    <div class="slide">
-                        <div class="stars">★★★★★</div>
-                        <p class="review-text">"Profesjonalizm na najwyższym poziomie. Artyści doskonale słuchają potrzeb klienta, doradzają i dbają o każdy detal projektu. Atmosfera jest świetna!"</p>
-                        <p class="review-author">// ANETA OWSIANKA</p>
-                    </div>
-                    <div class="slide">
-                        <div class="stars">★★★★★</div>
-                        <p class="review-text">"The best salon tatuażu... nowa lokalizacja z fantastyczną atmosferą, a efekty tatuaży są naprawdę niesamowite. Jak na Warszawę ceny naprawdę w porządku."</p>
-                        <p class="review-author">// ANDRZEJ MACIEJEWSKI</p>
-                    </div>
-                    <div class="slide">
-                        <div class="stars">★★★★★</div>
-                        <p class="review-text">"Do zrobienia był cover i lepiej trafić nie mogłam. Stary tatuaż zniknął, a nowy wygląda obłędnie. Artysta pomógł dobrać wzór idealnie."</p>
-                        <p class="review-author">// KTOŚ (OPINIA GOOGLE)</p>
-                    </div>
-                    <div class="slide">
-                        <div class="stars">★★★★★</div>
-                        <p class="review-text">"To, co stworzył Gabsztyl, przerosło moje najśmielsze oczekiwania. Super atmosfera i przesympatyczni ludzie."</p>
-                        <p class="review-author">// KASIA LUTOSTANSKA</p>
                     </div>
                 </div>
                 <div class="dots-container" id="dotsContainer"></div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="https://maps.app.goo.gl/3L1jmJKSzjYFqYmj9" target="_blank" class="btn-google">
+                    📍 ZOBACZ WSZYSTKIE OPINIE NA GOOGLE
+                </a>
             </div>
         </section>
 
@@ -315,7 +307,7 @@
             <h2 style="margin: 20px 0;">ZADZWOŃ DO NAS</h2>
             <a href="tel:+48570863474" class="phone-link">+48 570 863 474</a>
             <br><br>
-            <a href="#" target="_blank" class="btn-nav" style="display: inline-block; text-decoration: none; margin-top: 20px;">LOKALIZACJA STUDIA 🗺️</a>
+            <a href="https://maps.app.goo.gl/WpD9C68K6E6qS9vS7" target="_blank" class="btn-nav" style="display: inline-block; text-decoration: none; margin-top: 20px;">LOKALIZACJA STUDIA 🗺️</a>
         </section>
     </main>
 
@@ -327,7 +319,6 @@
     </footer>
 
     <script>
-        /* OBSŁUGA LOGO */
         window.onscroll = function() {
             var logo = document.getElementById("mainLogo");
             if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
@@ -335,13 +326,13 @@
             }
         };
 
-        /* OBSŁUGA DŹWIĘKÓW */
         const tattooSound = document.getElementById('soundTattoo');
         const barberSound = document.getElementById('soundBarber');
         tattooSound.volume = 0.2;
         barberSound.volume = 0.2;
         const playSound = (audio) => { audio.currentTime = 0; audio.play().catch(e => {}); };
         const stopSound = (audio) => { audio.pause(); audio.currentTime = 0; };
+        
         document.querySelectorAll('.tattoo-card').forEach(card => {
             card.addEventListener('mouseenter', () => playSound(tattooSound));
             card.addEventListener('mouseleave', () => stopSound(tattooSound));
@@ -351,13 +342,11 @@
             card.addEventListener('mouseleave', () => stopSound(barberSound));
         });
 
-        /* --- SKRYPT SLIDERA OPINII --- */
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const wrapper = document.getElementById('slidesWrapper');
         const dotsContainer = document.getElementById('dotsContainer');
 
-        // Tworzenie kropek
         slides.forEach((_, i) => {
             const dot = document.createElement('div');
             dot.classList.add('dot');
@@ -367,28 +356,19 @@
         });
 
         const dots = document.querySelectorAll('.dot');
-
         function updateSlider() {
             wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentSlide);
-            });
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
         }
-
         function moveSlide(direction) {
             currentSlide = (currentSlide + direction + slides.length) % slides.length;
             updateSlider();
         }
-
         function goToSlide(index) {
             currentSlide = index;
             updateSlider();
         }
-
-        // Auto-przesuwanie co 5 sekund
         let autoSlide = setInterval(() => moveSlide(1), 5000);
-
-        // Zatrzymaj auto-przesuwanie przy interakcji myszką
         document.querySelector('.slider-container').addEventListener('mouseenter', () => clearInterval(autoSlide));
         document.querySelector('.slider-container').addEventListener('mouseleave', () => {
             autoSlide = setInterval(() => moveSlide(1), 5000);
