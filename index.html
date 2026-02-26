@@ -10,7 +10,7 @@
 
     <style>
         :root {
-            --bg-deep: #07060D;
+            --bg-deep: #05040a;
             --bg-alt: #0E0A1A;
             --neon-magenta: #FF2BD6;
             --neon-cyan: #00E5FF;
@@ -33,11 +33,28 @@
             line-height: 1.8;
         }
 
+        /* DYNAMICZNE TŁO CYBERPUNKOWE */
         .bg-elements {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
             background: radial-gradient(circle at 20% 30%, rgba(124, 60, 255, 0.15) 0%, transparent 50%),
                         radial-gradient(circle at 80% 70%, rgba(255, 43, 214, 0.1) 0%, transparent 50%);
         }
+
+        /* SIATKA 3D (CYBER GRID) */
+        .cyber-grid {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background-image: 
+                linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            perspective: 500px;
+            transform: perspective(500px) rotateX(60deg) translateY(-100px);
+            mask-image: linear-gradient(to bottom, transparent, black);
+            animation: grid-move 20s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes grid-move { from { background-position: 0 0; } to { background-position: 0 500px; } }
 
         h1, h2, h3 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
         .mono { font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; }
@@ -63,53 +80,74 @@
         nav a { text-decoration: none; color: var(--text-secondary); font-size: 0.8rem; font-weight: 600; transition: 0.3s; }
         nav a:hover { color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); }
 
+        /* LOGO - EFEKT AKTYWACJI SYSTEMU */
+        .main-logo-img {
+            width: 100%; max-width: 500px; height: auto;
+            filter: grayscale(1) brightness(0.4) blur(2px);
+            transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+            transform: scale(0.9);
+            cursor: pointer;
+        }
+
+        .main-logo-img.activated {
+            filter: grayscale(0) brightness(1) blur(0) drop-shadow(0 0 20px var(--neon-magenta));
+            transform: scale(1);
+            animation: cyber-pulse 4s infinite alternate ease-in-out;
+        }
+
+        @keyframes cyber-pulse { 0% { transform: scale(1); } 100% { transform: scale(1.02); } }
+
+        /* PRZYCISKI */
         .btn-cyber {
             display: inline-flex; align-items: center; justify-content: center;
             padding: 15px 30px; border-radius: 5px; font-family: 'Orbitron';
             font-size: 0.8rem; font-weight: 700; text-decoration: none; 
             transition: 0.3s; cursor: pointer; border: none;
         }
+        .btn-primary { background: var(--dna-gradient); color: white; box-shadow: 0 0 15px rgba(255, 43, 214, 0.3); }
+        .btn-primary:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 0 30px rgba(255, 43, 214, 0.6); }
+        .btn-outline { background: transparent; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); }
+        .btn-outline:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 20px var(--neon-cyan); }
 
-        .btn-primary { 
-            background: var(--dna-gradient); color: white;
-            box-shadow: 0 0 15px rgba(255, 43, 214, 0.3);
-        }
-        .btn-primary:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(255, 43, 214, 0.6); }
-
-        .btn-outline {
-            background: transparent; border: 1px solid var(--neon-cyan); color: var(--neon-cyan);
-        }
-        .btn-outline:hover { background: var(--neon-cyan); color: var(--bg-deep); box-shadow: 0 0 20px var(--neon-cyan); }
-
-        .main-logo-img {
-            width: 100%; max-width: 500px; height: auto;
-            filter: drop-shadow(0 0 15px var(--neon-magenta));
-            animation: cyber-pulse 4s infinite alternate ease-in-out;
-        }
-
-        @keyframes cyber-pulse { 0% { transform: scale(1); } 100% { transform: scale(1.02); } }
-
+        /* HERO 3D */
         .hero { min-height: 70vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; padding: 60px 0; }
-        .hero-text h1 { font-size: clamp(2rem, 8vw, 3.5rem); line-height: 1.1; margin-bottom: 25px; }
-        
         .hero-img-frame { 
             width: 100%; height: 500px; 
             background: url('wnetrze.jpeg') center/cover; 
-            border-radius: 20px; border: 0px solid var(--glass-border); 
+            border-radius: 20px;
             box-shadow: 0 0 30px rgba(124, 60, 255, 0.2); 
+            transition: 0.5s;
+            transform-style: preserve-3d;
         }
+        .hero:hover .hero-img-frame { transform: perspective(1000px) rotateY(-5deg) rotateX(2deg); }
 
+        /* KARTY ARTYSTÓW - INTERAKTYWNOŚĆ */
         .artist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 35px; padding: 40px 0; }
-        .artist-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 15px; overflow: hidden; transition: 0.3s; text-align: center; }
+        .artist-card { 
+            background: var(--glass-bg); 
+            border: 1px solid var(--glass-border); 
+            border-radius: 15px; 
+            overflow: hidden; 
+            transition: all 0.4s ease; 
+            text-align: center;
+        }
+        .artist-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 40px rgba(0, 229, 255, 0.3);
+        }
         .artist-img-container { width: 100%; height: 450px; overflow: hidden; border-bottom: 2px solid var(--neon-cyan); }
-        .artist-img-container img { width: 100%; height: 100%; object-fit: cover; }
+        .artist-img-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .artist-card:hover img { transform: scale(1.1); }
         .artist-info { padding: 30px; }
 
+        /* OPINIE - SLIDER (ZACHOWANY) */
         .reviews-section { padding: 80px 0; }
         .slider-container {
             max-width: 900px; margin: 0 auto; position: relative;
             background: var(--glass-bg); border: 1px solid var(--neon-magenta);
             border-radius: 20px; padding: 60px 20px; overflow: hidden;
+            backdrop-filter: blur(10px);
         }
         .slides-wrapper { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
         .slide { min-width: 100%; padding: 0 40px; text-align: center; }
@@ -139,6 +177,7 @@
     <audio id="soundBarber" src="nozyczki.mp3" preload="auto"></audio>
 
     <div class="bg-elements"></div>
+    <div class="cyber-grid"></div>
 
     <header>
         <div class="container header-content">
@@ -150,17 +189,17 @@
                     <li><a href="#contact">Kontakt</a></li>
                 </ul>
             </nav>
-            <img src="logotyp%20custom%20tattoo.png" alt="CUSTOM TATTOO LOGO" class="main-logo-img">
+            <img src="logotyp%20custom%20tattoo.png" alt="CUSTOM TATTOO LOGO" class="main-logo-img" id="mainLogo">
         </div>
     </header>
 
     <main class="container">
         <section class="hero">
             <div class="hero-text">
-                <span class="mono" style="color: var(--neon-cyan);">// SYSTEM_STATUS: ONLINE</span>
+                <span class="mono" id="systemStatus" style="color: var(--text-secondary);">// SYSTEM_STATUS: STANDBY</span>
                 <h1>CUSTOM <br><span style="color: var(--neon-magenta);">TATTOO</span> WARSZAWA</h1>
                 <p>Połączenie wizjonerskiej sztuki z rzemiosłem przyszłości. Twój projekt, nasza pasja.</p>
-                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 30px;">
                     <a href="zapisy.html" class="btn-cyber btn-primary" style="flex: 1; min-width: 200px;">UMÓW SESJĘ</a>
                     <a href="portfolio.html" class="btn-cyber btn-outline" style="flex: 1; min-width: 200px;">PORTFOLIO VIDEO</a>
                 </div>
@@ -283,6 +322,26 @@
     </footer>
 
     <script>
+        // FUNKCJA AKTYWACJI SYSTEMU (LOGO)
+        const logo = document.getElementById('mainLogo');
+        const statusText = document.getElementById('systemStatus');
+        let isActivated = false;
+
+        function activatePage() {
+            if (!isActivated) {
+                logo.classList.add('activated');
+                statusText.innerText = "// SYSTEM_STATUS: ONLINE";
+                statusText.style.color = "var(--neon-cyan)";
+                isActivated = true;
+            }
+        }
+
+        // Aktywacja przez scroll lub dotyk
+        window.addEventListener('scroll', activatePage);
+        window.addEventListener('touchstart', activatePage);
+        logo.addEventListener('click', activatePage);
+
+        // DŹWIĘKI
         const tattooSound = document.getElementById('soundTattoo');
         const barberSound = document.getElementById('soundBarber');
         tattooSound.volume = 0.1;
@@ -297,6 +356,7 @@
             c.addEventListener('mouseleave', () => { barberSound.pause(); barberSound.currentTime = 0; });
         });
 
+        // SLIDER OPINII (LOGIKA)
         let currentSlide = 0;
         const wrapper = document.getElementById('slidesWrapper');
         const totalSlides = 10;
