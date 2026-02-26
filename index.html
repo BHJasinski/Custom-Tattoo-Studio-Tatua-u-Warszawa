@@ -92,7 +92,6 @@
         .hero { min-height: 70vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; padding: 60px 0; }
         .hero-text h1 { font-size: clamp(2rem, 8vw, 3.5rem); line-height: 1.1; margin-bottom: 25px; }
         
-        /* TUTAJ ZMIANA: wnetrze.png na wnetrze.jpeg */
         .hero-img-frame { 
             width: 100%; height: 500px; 
             background: url('wnetrze.jpeg') center/cover; 
@@ -128,18 +127,9 @@
         .contact-box { padding: 80px 20px; text-align: center; background: var(--glass-bg); border-radius: 20px; margin: 80px 0; border: 1px solid var(--neon-violet); }
         .phone-link { font-family: 'Orbitron'; font-size: clamp(1.5rem, 8vw, 3rem); background: var(--dna-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; font-weight: 900; }
 
-        .sticky-cta {
-            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            width: 90%; max-width: 400px; background: var(--dna-gradient);
-            padding: 15px; border-radius: 50px; z-index: 999; text-align: center;
-            color: white; font-weight: 900; font-family: 'Orbitron'; text-decoration: none;
-            box-shadow: 0 10px 30px rgba(255, 43, 214, 0.5); display: none;
-        }
-
         @media (max-width: 768px) {
             .hero { grid-template-columns: 1fr; text-align: center; }
             .hero-img-frame { height: 300px; }
-            .sticky-cta { display: block; }
         }
     </style>
 </head>
@@ -149,8 +139,6 @@
     <audio id="soundBarber" src="nozyczki.mp3" preload="auto"></audio>
 
     <div class="bg-elements"></div>
-
-    <a href="tel:+48570863474" class="sticky-cta">📞 ZADZWOŃ TERAZ</a>
 
     <header>
         <div class="container header-content">
@@ -209,7 +197,7 @@
                     <div class="artist-info">
                         <span class="mono" style="color: var(--neon-violet);">// MASTER_BARBER</span>
                         <h3>Mariusz</h3>
-                        <a href="https://booksy.com/pl-pl/323844_custom-barbershop_barber-shop_3_warszawa" target="_blank" class="btn-cyber btn-primary" style="margin-top: 15px; width: 100%;">BOOKSY (BARBER)</a>
+                        <a href="https://booksy.com/pl-pl/323844_custom-barbershop_barber-shop_3_warszawa" target="_blank" class="btn-cyber btn-primary" style="margin-top: 15px; width: 100%;">UMÓW SESJE</a>
                     </div>
                 </div>
             </div>
