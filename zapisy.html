@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZAPISY | CUSTOM TATTOO WARSZAWA</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-deep: #07060D;
+            --neon-cyan: #00E5FF;
+            --neon-magenta: #FF2BD6;
+            --neon-violet: #7C3CFF;
+            --text-main: #F4F1FF;
+            --dna-gradient: linear-gradient(135deg, #FF2BD6 0%, #7C3CFF 45%, #00E5FF 100%);
+            --glass-bg: rgba(18, 11, 42, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .bg-elements {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: radial-gradient(circle at 10% 20%, rgba(124, 60, 255, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(255, 43, 214, 0.1) 0%, transparent 40%);
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--glass-border);
+            background: rgba(7, 6, 13, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky; top: 0; z-index: 100;
+        }
+
+        .back-btn {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            border: 1px solid var(--neon-cyan);
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .back-btn:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 20px var(--neon-cyan); }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+
+        .protocol-header { text-align: center; margin-bottom: 60px; }
+        .protocol-header h1 { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: clamp(1.5rem, 6vw, 2.5rem); 
+            background: var(--dna-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .mono-tag { font-family: 'IBM Plex Mono', monospace; color: var(--neon-cyan); font-size: 0.8rem; }
+
+        /* Styl Kroku */
+        .step-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-left: 4px solid var(--neon-violet);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            transition: 0.3s;
+        }
+        .step-card:hover { border-color: var(--neon-magenta); transform: translateX(10px); }
+
+        .step-num {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            top: 10px; right: 20px;
+        }
+
+        .step-card h3 { 
+            font-family: 'Orbitron', sans-serif; 
+            color: var(--neon-cyan); 
+            margin-bottom: 15px; 
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .step-card p { color: var(--text-secondary); font-size: 1rem; }
+
+        .cta-box {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px;
+            border: 1px dashed var(--neon-magenta);
+            border-radius: 20px;
+        }
+
+        .btn-final {
+            display: inline-block;
+            background: var(--dna-gradient);
+            color: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(255, 43, 214, 0.3);
+            transition: 0.3s;
+        }
+        .btn-final:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(255, 43, 214, 0.5); }
+
+        @media (max-width: 600px) {
+            .step-card:hover { transform: none; }
+            .container { padding-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-elements"></div>
+
+    <header>
+        <a href="index.html" class="back-btn">← POWRÓT</a>
+    </header>
+
+    <main class="container">
+        <div class="protocol-header">
+            <span class="mono-tag">[ SYSTEM_INITIALIZATION: BOOKING_PROTOCOL ]</span>
+            <h1>JAK SIĘ ZAPISAĆ?</h1>
+        </div>
+
+        <div class="step-card">
+            <div class="step-num">01</div>
+            <h3>WIADOMOŚĆ PRYWATNA</h3>
+            <p>Napisz do nas na Instagramie lub zadzwoń. Opisz swój pomysł: <strong>co chcesz zrobić, w jakim miejscu na ciele i jakiej wielkości (w cm)</strong>. Daj znać, czy interesuje Cię kolor, czy czerń i szarości.</p>
+        </div>
+
+        <div class="step-card" style="border-left-color: var(--neon-cyan);">
+            <div class="step-num">02</div>
+            <h3>ANALIZA PROJEKTU</h3>
+            <p>Poczekaj na naszą odpowiedź. Przeanalizujemy Twój pomysł, zaproponujemy odpowiedniego artystę, dogodny termin oraz podamy wycenę sesji.</p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-num">03</div>
+            <h3>DANE DO REZERWACJI</h3>
+            <p>Jeśli termin Ci odpowiada, poprosimy Cię o podanie danych: <strong>Imię, Nazwisko oraz Numer Telefonu</strong>. Te informacje są niezbędne do wpisania Cię w nasz system.</p>
+        </div>
+
+        <div class="step-card" style="border-left-color: var(--neon-magenta);">
+            <div class="step-num">04</div>
+            <h3>ZADATEK (48H)</h3>
+            <p>Aby rezerwacja była wiążąca, należy wpłacić zadatek w ciągu <strong>48 godzin</strong>. Możesz to zrobić przelewem lub osobiście u nas w studio.</p>
+        </div>
+
+        <div class="step-card" style="border-left-color: #00ff00;">
+            <div class="step-num">05</div>
+            <h3>GWARANCJA TERMINU</h3>
+            <p>Po zaksięgowaniu wpłaty Twój termin zostaje oficjalnie potwierdzony i zarezerwowany w kalendarzu. Otrzymasz od nas potwierdzenie.</p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-num">06</div>
+            <h3>PRZYPOMNIENIE</h3>
+            <p>Nie musisz o niczym pamiętać – dzień przed planowaną sesją skontaktujemy się z Tobą, aby potwierdzić Twoją wizytę.</p>
+        </div>
+
+        <div class="cta-box">
+            <p class="mono-tag" style="margin-bottom: 20px;">GOTOWY NA NOWY TATUAŻ?</p>
+            <a href="https://www.instagram.com/customtattoowarsaw/" target="_blank" class="btn-final">NAPISZ DO NAS TERAZ</a>
+        </div>
+    </main>
+
+</body>
+</html>
